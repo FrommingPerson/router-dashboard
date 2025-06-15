@@ -1,9 +1,10 @@
 <div class="px-4 sm:px-6 lg:px-8">
   <div class="sm:flex sm:items-center">
     <div class="sm:flex-auto">
-      <h1 class="text-base font-semibold text-gray-900">Users</h1>
+      <h1 class="text-base font-semibold text-gray-900">Routes</h1>
       <p class="mt-2 text-sm text-gray-700">
-        A list of all the users in your account including their name, title, email and role.
+        A list of all the routes in your app including their address of destination, gateway and
+        interface.
       </p>
     </div>
     <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
@@ -11,26 +12,40 @@
         (click)="add()"
         type="button"
         class="bg-primary-600 hover:bg-primary-500 focus-visible:outline-primary-600 block rounded-md px-3 py-2 text-center text-sm font-semibold text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2">
-        Add user
+        Add route
       </button>
     </div>
   </div>
   <div class="mt-8 flow-root">
     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-        <table class="min-w-full divide-y divide-gray-300">
+        <table class="min-w-full table-fixed divide-y divide-gray-300">
           <thead>
             <tr class="divide-x divide-gray-200">
               <th
+                (click)="sortBy('Address of destination')"
                 scope="col"
-                class="py-3.5 pr-4 pl-4 text-left text-sm font-semibold text-gray-900 sm:pl-0">
-                Address of destination
+                class="w-1/2 cursor-pointer py-3.5 pr-4 pl-4 text-left text-sm font-semibold text-gray-900 select-none sm:pl-0">
+                Address of destination<span class="w-4"> @if (sortColumn === 'Address of destination'){
+                  {{ sortDirection !== 'asc' ? '▲' : '▼' }}}</span>
               </th>
-              <th scope="col" class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">
+              <th
+                (click)="sortBy('Gateway')"
+                scope="col"
+                class="w-1/4 px-4 py-3.5 text-left text-sm font-semibold text-gray-900 select-none">
                 Gateway
+                @if (sortColumn === 'Gateway') {
+                  <span>{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+                }
               </th>
-              <th scope="col" class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">
+              <th
+                (click)="sortBy('Interface')"
+                scope="col"
+                class=" w-1/4 px-4 py-3.5 text-left text-sm font-semibold text-gray-900 select-none">
                 Interface
+                @if (sortColumn === 'Interface') {
+                  <span>{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+                }
               </th>
             </tr>
           </thead>

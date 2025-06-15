@@ -21,7 +21,7 @@ import { NatRedirectionComponent } from './additional-settings/nat-redirection/n
     CopyButtonComponent,
     AdditionalSettingsComponent,
     QuickSetupComponent,
-    NatRedirectionComponent
+    NatRedirectionComponent,
   ],
   imports: [
     BrowserModule,

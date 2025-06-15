@@ -7,7 +7,7 @@ import { NatRedirectionComponent } from './additional-settings/nat-redirection/n
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'dashboard',
     pathMatch: 'full',
     component: MainPageComponent,
     title: "Your routes"

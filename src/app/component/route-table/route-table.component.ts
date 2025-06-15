@@ -11,6 +11,18 @@ export class RouteTableComponent {
   @Output() addRoute = new EventEmitter<void>();
 
   isClicked = false;
+  sortDirection = 'asc' || 'desc';
+  sortColumn: string = '';
+
+  protected sortBy(column: string) {
+    if (this.sortColumn == column) {
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    }
+    else {
+      this.sortColumn = column;
+      this.sortDirection = 'asc';
+    }
+  }
 
   protected add() {
     this.addRoute.emit();
