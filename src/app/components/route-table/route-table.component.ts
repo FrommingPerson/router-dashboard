@@ -12,9 +12,9 @@ export class RouteTableComponent {
 
   isClicked = false;
   sortDirection = 'asc' || 'desc';
-  sortColumn: string = '';
+  sortColumn: "gateway" | 'address' | 'interface' | null = null;
 
-  protected sortBy(column: string) {
+  protected sortBy(column: "gateway" | 'address' | 'interface') {
     if (this.sortColumn == column) {
       this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
     }

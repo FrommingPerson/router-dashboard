@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Route } from '../models/Route';
+import { Route } from '../../models/Route';
 
 @Component({
   selector: 'app-main-page',

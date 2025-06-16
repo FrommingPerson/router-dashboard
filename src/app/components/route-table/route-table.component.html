@@ -23,27 +23,27 @@
           <thead>
             <tr class="divide-x divide-gray-200">
               <th
-                (click)="sortBy('Address of destination')"
+                (click)="sortBy('address')"
                 scope="col"
                 class="w-1/2 cursor-pointer py-3.5 pr-4 pl-4 text-left text-sm font-semibold text-gray-900 select-none sm:pl-0">
-                Address of destination<span class="w-4"> @if (sortColumn === 'Address of destination'){
+                Address of destination<span class="w-4"> @if (sortColumn === 'address'){
                   {{ sortDirection !== 'asc' ? '▲' : '▼' }}}</span>
               </th>
               <th
-                (click)="sortBy('Gateway')"
+                (click)="sortBy('gateway')"
                 scope="col"
-                class="w-1/4 px-4 py-3.5 text-left text-sm font-semibold text-gray-900 select-none">
+                class="cursor-pointer w-1/4 px-4 py-3.5 text-left text-sm font-semibold text-gray-900 select-none">
                 Gateway
-                @if (sortColumn === 'Gateway') {
+                @if (sortColumn === 'gateway') {
                   <span>{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
                 }
               </th>
               <th
-                (click)="sortBy('Interface')"
+                (click)="sortBy('interface')"
                 scope="col"
-                class=" w-1/4 px-4 py-3.5 text-left text-sm font-semibold text-gray-900 select-none">
+                class="cursor-pointer w-1/4 px-4 py-3.5 text-left text-sm font-semibold text-gray-900 select-none">
                 Interface
-                @if (sortColumn === 'Interface') {
+                @if (sortColumn === 'interface') {
                   <span>{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
                 }
               </th>
