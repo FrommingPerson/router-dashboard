@@ -13,7 +13,7 @@ import { QuickSetupComponent } from './pages/additional-settings/quick-setup/qui
 import { NatRedirectionComponent } from './pages/additional-settings/nat-redirection/nat-redirection.component';
 import { InternetComponent } from './pages/internet/internet.component';
 import { WirelessModeComponent } from './pages/wireless-mode/wireless-mode.component';
-import { CommingSoonComponent } from './components/comming-soon/comming-soon.component';
+import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 import { WorkModeComponent } from './pages/additional-settings/work-mode/work-mode.component';
 import { EasyMeshComponent } from './pages/additional-settings/easy-mesh/easy-mesh.component';
 import { NetworkComponent } from './pages/additional-settings/network/network.component';
@@ -35,7 +35,7 @@ import { SystemComponent } from './pages/additional-settings/system/system.compo
     NatRedirectionComponent,
     InternetComponent,
     WirelessModeComponent,
-    CommingSoonComponent,
+    ComingSoonComponent,
     WorkModeComponent,
     EasyMeshComponent,
     NetworkComponent,

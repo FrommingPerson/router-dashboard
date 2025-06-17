@@ -23,34 +23,43 @@
           <thead>
             <tr class="divide-x divide-gray-200">
               <th
-                (click)="sortBy('address')"
+                (click)="sortBy('address')" (contextmenu)="discardSortBy($event)"
                 scope="col"
                 class="w-1/2 cursor-pointer py-3.5 pr-4 pl-4 text-left text-sm font-semibold text-gray-900 select-none sm:pl-0">
-                Address of destination<span class="w-4"> @if (sortColumn === 'address'){
-                  {{ sortDirection !== 'asc' ? '▲' : '▼' }}}</span>
-              </th>
-              <th
-                (click)="sortBy('gateway')"
-                scope="col"
-                class="cursor-pointer w-1/4 px-4 py-3.5 text-left text-sm font-semibold text-gray-900 select-none">
-                Gateway
-                @if (sortColumn === 'gateway') {
-                  <span>{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+                Address of destination
+                @if (sortColumn === 'address') {
+                  <span class="w-4"> {{ sortDirection === 'asc' ? '▲' : '▼' }} </span>
+                }
+                @else {
+                  <span>↕</span>
                 }
               </th>
               <th
-                (click)="sortBy('interface')"
+                (click)="sortBy('gateway')" (contextmenu)="discardSortBy($event)"
                 scope="col"
-                class="cursor-pointer w-1/4 px-4 py-3.5 text-left text-sm font-semibold text-gray-900 select-none">
+                class="w-1/4 cursor-pointer px-4 py-3.5 text-left text-sm font-semibold text-gray-900 select-none">
+                Gateway
+                @if (sortColumn === 'gateway') {
+                  <span>{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+                } @else {
+                  <span>↕</span>
+                }
+              </th>
+              <th
+                (click)="sortBy('interface')" (contextmenu)="discardSortBy($event)"
+                scope="col"
+                class="w-1/4 cursor-pointer px-4 py-3.5 text-left text-sm font-semibold text-gray-900 select-none">
                 Interface
                 @if (sortColumn === 'interface') {
                   <span>{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+                } @else {
+              <span>↕</span>
                 }
               </th>
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-200 bg-white">
-            @for (route of routes; track route.uuid) {
+            @for (route of sortedRoutes; track route.uuid) {
               <tr class="divide-x divide-gray-200">
                 <td
                   class="group/clipboard-button cursor-pointer py-4 pr-4 pl-4 text-sm font-medium whitespace-nowrap text-gray-500 sm:pl-0">
