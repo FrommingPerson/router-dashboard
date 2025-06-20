@@ -14,14 +14,23 @@ import { ParentControlComponent } from './pages/additional-settings/parent-contr
 import { ProtectionComponent } from './pages/additional-settings/protection/protection.component';
 import { Ipv6Component } from './pages/additional-settings/ipv6/ipv6.component';
 import { SystemComponent } from './pages/additional-settings/system/system.component';
+import { mainPageResolver } from './pages/main-page/main-page.resolver';
 
 let routes: Routes;
 routes = [
   {
     path: '',
+    redirectTo: '1/25',
+    pathMatch: 'full'
+  },
+  {
+    path: ':page/:pageSize',
     pathMatch: 'full',
     component: MainPageComponent,
-    title: 'Your routes',
+    title: 'Your routesResponse',
+    resolve: {
+      preload: mainPageResolver,
+    },
   },
   {
     path: 'additional-settings',

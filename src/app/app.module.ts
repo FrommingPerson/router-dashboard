@@ -22,6 +22,8 @@ import { ParentControlComponent } from './pages/additional-settings/parent-contr
 import { ProtectionComponent } from './pages/additional-settings/protection/protection.component';
 import { Ipv6Component } from './pages/additional-settings/ipv6/ipv6.component';
 import { SystemComponent } from './pages/additional-settings/system/system.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -44,13 +46,10 @@ import { SystemComponent } from './pages/additional-settings/system/system.compo
     ProtectionComponent,
     Ipv6Component,
     SystemComponent,
+    PaginationComponent,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
