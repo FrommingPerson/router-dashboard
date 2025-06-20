@@ -1,5 +1,6 @@
 # RouterDashboard
-
+# [OpenDemo](https://router-dashboard-73zu.vercel.app/)
+![Demo screenshot](src/assets/demo.png)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.7.
 
 ## Development server
