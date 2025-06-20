@@ -20,7 +20,7 @@ let routes: Routes;
 routes = [
   {
     path: '',
-    redirectTo: '1/25',
+    redirectTo: '1/5',
     pathMatch: 'full'
   },
   {
