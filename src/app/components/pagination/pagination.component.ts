@@ -16,7 +16,6 @@ export class PaginationComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute, private router: Router) {
-    this.pageSize = 100;
   }
 
   ngOnInit(): void {

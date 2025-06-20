@@ -6,7 +6,7 @@ export const mainPageResolver: ResolveFn<boolean> = (route, state) => {
   const service = inject(RouteService);
 
   const page = Number(route.paramMap.get('page')) || 1;
-  const pageSize = Number(route.paramMap.get('pageSize')) || 25;
+  const pageSize = Number(route.paramMap.get('pageSize')) || 5;
 
   service.getRoutes({ page, pageSize });
 
