@@ -24,6 +24,7 @@ import { Ipv6Component } from './pages/additional-settings/ipv6/ipv6.component';
 import { SystemComponent } from './pages/additional-settings/system/system.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { FormsModule } from '@angular/forms';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { FormsModule } from '@angular/forms';
     Ipv6Component,
     SystemComponent,
     PaginationComponent,
+    NotFoundComponent,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, FormsModule],
   providers: [],

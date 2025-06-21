@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { debounce, debounceTime, Subject } from 'rxjs';
+import { debounceTime, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-pagination',
@@ -31,16 +31,16 @@ export class PaginationComponent implements OnInit {
     this.pageSizeChange$
       .pipe(debounceTime(500))
       .subscribe((newSize) => {
-        this.router.navigate(['/', 1, newSize]);
+        this.router.navigate(['/dashboard', 1, newSize]);
       });
   }
 
   get previousLink(): any[] {
-    return ['/', this.page - 1, this.pageSize];
+    return ['/dashboard', this.page - 1, this.pageSize];
   }
 
   get nextLink(): any[] {
-    return ['/', this.page + 1, this.pageSize];
+    return ['/dashboard', this.page + 1, this.pageSize];
   }
 
   onPageSizeChange(pageSize: number) {

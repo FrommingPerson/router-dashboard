@@ -15,19 +15,20 @@ import { ProtectionComponent } from './pages/additional-settings/protection/prot
 import { Ipv6Component } from './pages/additional-settings/ipv6/ipv6.component';
 import { SystemComponent } from './pages/additional-settings/system/system.component';
 import { mainPageResolver } from './pages/main-page/main-page.resolver';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 let routes: Routes;
 routes = [
   {
     path: '',
-    redirectTo: '1/5',
+    redirectTo: 'dashboard/1/5',
     pathMatch: 'full'
   },
   {
-    path: ':page/:pageSize',
+    path: 'dashboard/:page/:pageSize',
     pathMatch: 'full',
     component: MainPageComponent,
-    title: 'Your routesResponse',
+    title: 'Dashboard',
     resolve: {
       preload: mainPageResolver,
     },
@@ -35,70 +36,75 @@ routes = [
   {
     path: 'additional-settings',
     component: AdditionalSettingsComponent,
-    title: 'Your additional settings',
+    title: 'Additional settings',
     children: [
       {
         path: '',
         component: QuickSetupComponent,
-        title: 'Your Quick Setup',
+        title: 'Additional settings — Quick Setup',
       },
       {
         path: 'work-mode',
         component: WorkModeComponent,
-        title: 'Work Mode',
+        title: 'Additional settings — Work Mode',
       },
       {
         path: 'easy-mesh',
         component: EasyMeshComponent,
-        title: 'Easy Mesh',
+        title: 'Additional settings — Easy Mesh',
       },
       {
         path: 'network',
         component: NetworkComponent,
-        title: 'Network',
+        title: 'Additional settings — Network',
       },
       {
         path: 'tp-link',
         component: TpLinkComponent,
-        title: 'TP Link ID',
+        title: 'Additional settings — TP Link ID',
       },
       {
         path: 'nat-redirection',
         component: NatRedirectionComponent,
-        title: 'NAT Redirection',
+        title: 'Additional settings — NAT Redirection',
       },
       {
         path: 'parent-control',
         component: ParentControlComponent,
-        title: 'Parent Control',
+        title: 'Additional settings — Parent Control',
       },
       {
         path: 'protection',
         component: ProtectionComponent,
-        title: 'Protection',
+        title: 'Additional settings — Protection',
       },
       {
         path: 'ipv6',
         component: Ipv6Component,
-        title: 'IPv6',
+        title: 'Additional settings — IPv6',
       },
       {
         path: 'system',
         component: SystemComponent,
-        title: 'System',
+        title: 'Additional settings — System',
       }
     ],
   },
   {
     path: 'internet',
     component: InternetComponent,
-    title: 'Your internet settings',
+    title: 'Internet settings',
   },
   {
     path: 'wireless-mode',
     component: WirelessModeComponent,
     title: 'Wireless Mode settings',
   },
+  {
+    path: '**',
+    component: NotFoundComponent,
+    title: 'Not Found',
+  }
 ];
 
 @NgModule({

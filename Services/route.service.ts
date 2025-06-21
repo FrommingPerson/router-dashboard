@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Route } from '../src/app/models/Route';
-import { v4 as uuidv4 } from 'uuid';
 import { RoutesResponse } from '../src/app/models/Routes-response';
 
 @Injectable({
@@ -161,7 +159,7 @@ export class RouteService {
         pageSize: params.pageSize
       }
       this._routesResponse$.next(routesResponse);
-    }, 1000);
+    }, 300);
   }
 
   // addRoute(route: Omit<Route, 'uuid'>) {
