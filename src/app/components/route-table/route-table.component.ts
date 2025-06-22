@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Route } from '../../models/Route';
-import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
+import { RouteService } from '../../../../Services/route.service';
+import { uuid } from 'uuidv4';
+
 
 @Component({
   selector: 'app-route-table',
@@ -10,11 +12,15 @@ import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
 })
 export class RouteTableComponent {
   @Input({ required: true }) routes!: Route[];
+  newRoutes: Route[] = [];
+
+  constructor(private readonly routeService: RouteService) {
+  }
 
   protected sortParamsSubject: {
     direction: 'ascending' | 'descending' | 'default';
     column: 'gateway' | 'address' | 'interface' | null;
-  } = ({ direction: 'default', column: null });
+  } = { direction: 'default', column: null };
 
   get sortedRoutes(): Route[] {
     if (!this.sortParamsSubject.column) {
@@ -76,6 +82,21 @@ export class RouteTableComponent {
   }
 
   protected add() {
+    this.newRoutes.push({
+      address: '', gateway: '', interface: '', mask: '', uuid: ''
+    });
+  }
 
+  protected save(index: number) {
+    this.routeService.addRoute(this.newRoutes[index]);
+    this.newRoutes.splice(index, 1);
+  }
+
+  protected onDelete(routesUuid: string) {
+     this.routeService.deleteRoute(routesUuid);
+  }
+
+  protected cancel(index: number) {
+    this.newRoutes.splice(index, 1);
   }
 }

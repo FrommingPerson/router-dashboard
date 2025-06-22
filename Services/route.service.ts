@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { RoutesResponse } from '../src/app/models/Routes-response';
+import { v4 as uuidv4 } from 'uuid'
+import { Route } from '../src/app/models/Route';
 
 @Injectable({
   providedIn: 'root',
@@ -162,30 +164,48 @@ export class RouteService {
     }, 300);
   }
 
-  // addRoute(route: Omit<Route, 'uuid'>) {
-  //   const currentRoutesResponse = this._routesResponse$.getValue();
-  //   const newRoute: Route = { ...route, uuid: uuidv4() };
-  //   const routesResponse: RoutesResponse = {
-  //     routes: currentRoutesResponse?.routes,
-  //     totalCounts: currentRoutesResponse?.totalCounts,
-  //     page: params.page,
-  //     pageSize: params.pageSize
-  //   }
-  // }
-  //
-  // deleteRoute(uuid: string) {
-  //   const routesResponse = this._routesResponse$.getValue().filter((existingRoute) => existingRoute.uuid !== uuid);
-  //   this._routesResponse$.next(routesResponse);
-  // }
-  //
-  // updateRoute(updatedRoute: Route) {
-  //   const routesResponse = this._routesResponse$
-  //     .getValue()
-  //     .map((existingRoute) =>
-  //       existingRoute.uuid === updatedRoute.uuid ? updatedRoute : existingRoute,
-  //     );
-  //   this._routesResponse$.next(routesResponse);
-  // }
+  addRoute(route: Omit<Route, 'uuid'>) {
+    const current = this._routesResponse$.getValue();
+    if (!current) { return; }
+
+    const newRoute: Route = { ...route, uuid: uuidv4() };
+
+    // кладём спереди, чтобы сразу появилось первой строкой
+    const updatedRoutes = [newRoute, ...current.routes];
+
+    // если переполнили текущую страницу — убираем «хвост»
+    if (updatedRoutes.length > current.pageSize) {
+      updatedRoutes.pop();
+    }
+
+    this._routesResponse$.next({
+      ...current,
+      routes: updatedRoutes,
+      totalCounts: current.totalCounts + 1,
+    });
+  }
+
+
+  deleteRoute(uuid: string) {
+    const routesResponseCurrentState = this._routesResponse$.getValue();
+    if (!routesResponseCurrentState) {return}
+
+    const routesAfterDeleting = routesResponseCurrentState.routes.filter((existingRoute) => existingRoute.uuid !== uuid);
+
+    this._routesResponse$.next({
+      ...routesResponseCurrentState, routes: routesAfterDeleting, totalCounts: Math.max(routesResponseCurrentState.totalCounts -1, 0),
+    });
+  }
+
+  updateRoute(updatedRoute: Route) {
+    const routesResponseCurrentState = this._routesResponse$.getValue();
+
+    if (!routesResponseCurrentState) {return}
+
+    const updatedRoutes = routesResponseCurrentState.routes.map((existingRoute) => existingRoute.uuid === updatedRoute.uuid ? updatedRoute : existingRoute);
+
+    this._routesResponse$.next({...routesResponseCurrentState, routes: updatedRoutes});
+  }
 
   constructor() {}
 }

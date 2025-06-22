@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="icon-save" viewBox="0 0 24 24">
+    <path d="M17 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7z"/>
+  </symbol>
+  <symbol id="icon-edit" viewBox="0 0 24 24">
+    <path d="M4 21v-2a2 2 0 0 1 2-2h2l9-9a2 2 0 0 1 2.83 2.83l-9 9a2 2 0 0 1-2.83 0z"/>
+  </symbol>
+  <symbol id="icon-cancel" viewBox="0 0 24 24" fill="text-black" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+  </symbol>
+  <!-- Добавляй сколько хочешь -->
+</svg>
+
+

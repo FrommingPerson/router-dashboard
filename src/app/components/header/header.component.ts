@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter, map, startWith } from 'rxjs/operators';
+import { RouteService } from '../../../../Services/route.service';
+import { RoutesResponse } from '../../models/Routes-response';
+
 
 @Component({
   selector: 'app-header',
@@ -16,11 +19,17 @@ export class HeaderComponent {
     startWith(this.extractTitle())
   );
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private routeService: RouteService) {}
 
   toggleMenu() {
     this.isUserMenuOpened = !this.isUserMenuOpened;
   }
+
+  readonly dashboardLink$ = this.routeService.routesResponse$.pipe(
+    map((res: RoutesResponse | null) =>
+      res ? ['/dashboard', res.page, res.pageSize] : ['/dashboard', 1, 5]
+    )
+  );
 
   private extractTitle(): string {
     let route = this.router.routerState.root;

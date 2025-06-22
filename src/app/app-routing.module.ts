@@ -21,7 +21,7 @@ let routes: Routes;
 routes = [
   {
     path: '',
-    redirectTo: 'dashboard/1/5',
+    redirectTo: 'dashboard/1/6',
     pathMatch: 'full'
   },
   {

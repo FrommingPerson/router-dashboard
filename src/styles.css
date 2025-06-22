@@ -12,5 +12,13 @@
   --color-primary-800: oklch(0.398 0.195 277.366);
   --color-primary-900: oklch(0.359 0.144 278.697);
   --color-primary-950: oklch(0.257 0.09 281.288);
+
 }
 
+.btn-delete{
+  @apply rounded-full bg-red-600 p-1.5 text-white shadow-xs hover:bg-red-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600
+}
+
+.btn-cancel {
+  @apply rounded-full bg-orange-600 p-1.5 text-white shadow-xs hover:bg-orange-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600
+}
