@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Route } from '../../models/Route';
 import { RouteService } from '../../../../Services/route.service';
-import { uuid } from 'uuidv4';
 
 
 @Component({

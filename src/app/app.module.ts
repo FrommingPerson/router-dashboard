@@ -29,6 +29,7 @@ import { DeleteButtonComponent } from './components/delete-button/delete-button.
 import { EditButtonComponent } from './components/edit-button/edit-button.component';
 import { SaveButtonComponent } from './components/save-button/save-button.component';
 import { CancelButtonComponent } from './components/cancel-button/cancel-button.component';
+import { NgOptimizedImage } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,13 @@ import { CancelButtonComponent } from './components/cancel-button/cancel-button.
     SaveButtonComponent,
     CancelButtonComponent,
   ],
-  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, FormsModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    FormsModule,
+    NgOptimizedImage,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
