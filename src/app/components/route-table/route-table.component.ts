@@ -13,6 +13,7 @@ import { uuid } from 'uuidv4';
 export class RouteTableComponent {
   @Input({ required: true }) routes!: Route[];
   newRoutes: Route[] = [];
+  editingRoutesId: string[] = [];
 
   constructor(private readonly routeService: RouteService) {
   }
@@ -96,7 +97,25 @@ export class RouteTableComponent {
      this.routeService.deleteRoute(routesUuid);
   }
 
-  protected cancel(index: number) {
-    this.newRoutes.splice(index, 1);
+  protected cancelEdit(index: number, isNewArray: boolean) {
+    if (isNewArray) {
+      this.newRoutes.splice(index, 1);
+      return
+    }
+    this.toggleEdit(this.sortedRoutes[index].uuid);
+  }
+
+  protected toggleEdit(routeId: string) {
+    const index = this.editingRoutesId.indexOf(routeId);
+    if (index !== -1) {
+      this.editingRoutesId.splice(index, 1);
+      return;
+    }
+    this.editingRoutesId.push(routeId);
+  }
+
+  protected update(route: Route) {
+    this.routeService.updateRoute(route);
+    this.toggleEdit(route.uuid);
   }
 }

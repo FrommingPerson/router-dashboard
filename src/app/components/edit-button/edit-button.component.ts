@@ -6,9 +6,5 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './edit-button.component.css'
 })
 export class EditButtonComponent {
-  @Output() edit = new EventEmitter<void>();
 
-  onClick() {
-    this.edit.emit();
-  }
 }

@@ -29,7 +29,6 @@ import { DeleteButtonComponent } from './components/delete-button/delete-button.
 import { EditButtonComponent } from './components/edit-button/edit-button.component';
 import { SaveButtonComponent } from './components/save-button/save-button.component';
 import { CancelButtonComponent } from './components/cancel-button/cancel-button.component';
-import { TableRowComponent } from './components/table-row/table-row.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +57,6 @@ import { TableRowComponent } from './components/table-row/table-row.component';
     EditButtonComponent,
     SaveButtonComponent,
     CancelButtonComponent,
-    TableRowComponent,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, FormsModule],
   providers: [],
