@@ -25,10 +25,6 @@ import { SystemComponent } from './pages/additional-settings/system/system.compo
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { DeleteButtonComponent } from './components/delete-button/delete-button.component';
-import { EditButtonComponent } from './components/edit-button/edit-button.component';
-import { SaveButtonComponent } from './components/save-button/save-button.component';
-import { CancelButtonComponent } from './components/cancel-button/cancel-button.component';
 import { NgOptimizedImage } from '@angular/common';
 
 @NgModule({
@@ -54,10 +50,6 @@ import { NgOptimizedImage } from '@angular/common';
     SystemComponent,
     PaginationComponent,
     NotFoundComponent,
-    DeleteButtonComponent,
-    EditButtonComponent,
-    SaveButtonComponent,
-    CancelButtonComponent,
   ],
   imports: [
     BrowserModule,

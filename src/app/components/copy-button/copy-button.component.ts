@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-copy-button',
@@ -13,6 +13,14 @@ export class CopyButtonComponent {
   protected setToClipBoard() {
     this.isChecked = true;
     window.navigator.clipboard.writeText(this.copiedText);
-    setTimeout(() => (this.isChecked = false), 1200);
+    setTimeout(() => {
+      this.isChecked = false;
+      this.cdr.detectChanges()
+      console.log(this.isChecked);
+    }, 1200);
+  }
+
+  constructor(private readonly cdr: ChangeDetectorRef) {
+
   }
 }
